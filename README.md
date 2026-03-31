@@ -1,6 +1,9 @@
-# Android Machine Coding Starter
+[Screen_recording_20260331_111311.webm](https://github.com/user-attachments/assets/1a5161b2-2a7d-49e5-91bd-f73b20506c00)# Android Machine Coding Starter
 
 This is a minimal starter project for interview setup.
+
+
+[Screen_recording_20260331_111311.webm](https://github.com/user-attachments/assets/86daacda-cc9c-453e-a6d5-d64dc8aae3a0)
 
 Issue was 
 
@@ -17,7 +20,6 @@ Issue was
     }
 
 I forgot to  emit()
-
 
 
 Instructions:
