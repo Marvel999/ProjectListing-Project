@@ -1,0 +1,47 @@
+# Gradle
+.gradle/
+build/
+**/build/
+.idea/
+
+# Local machine config (SDK path, secrets)
+local.properties
+
+# Android Studio / IntelliJ
+*.iml
+.idea/caches/
+.idea/libraries/
+.idea/modules.xml
+.idea/workspace.xml
+.idea/navEditor.xml
+.idea/assetWizardSettings.xml
+.idea/deploymentTargetSelector.xml
+.idea/gradle.xml
+.idea/misc.xml
+.idea/compiler.xml
+.idea/jarRepositories.xml
+
+# Kotlin
+.kotlin/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Keystores (never commit signing keys)
+*.jks
+*.keystore
+
+# Captures / profiling
+captures/
+*.hprof
+
+# NDK / CMake
+.externalNativeBuild/
+.cxx/
+
+# Fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/
+fastlane/test_output/
