@@ -18,3 +18,5 @@ Issue was
     }
 
 I forgot to  emit()
+
+I have solved the infinite loading issue in the commit msg "[Fixed] Fixed infinite loading issue"
