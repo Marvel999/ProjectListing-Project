@@ -14,7 +14,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -23,9 +22,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -96,10 +93,11 @@ class ProductListActivity : ComponentActivity() {
                             productList.data.size,
                             key = { it -> productList.data[it].id ?: it }) { index ->
                             ProductItem(productList.data.get(index)) { id ->
-//                                if (id != null) {
-//                                    val intent = Intent(this@ProductListActivity, ProductDetailsActivity::class.java)\
-//                                    intent.putExtra(AppContents.PRODUCT_ID, )
-//                                }
+                                if (id != null) {
+                                    val intent = Intent(this@ProductListActivity, ProductDetailsActivity::class.java)
+                                    intent.putExtra(AppContents.PRODUCT_ID, id)
+                                    startActivity(intent)
+                                }
                             }
                         }
                     }
@@ -123,9 +121,8 @@ class ProductListActivity : ComponentActivity() {
                     .fillMaxWidth()
                     .aspectRatio(1.8f)
             )
-            Text(text = productListResItem.title?:"", fontSize = 18.sp) }
-//            productListResItem.price?.let { Text(text = it, fontSize = 12.sp) }
-//            productListResItem.description?.let { Text(text = it, fontSize = 12.sp) }
-//            productListResItem.category?.let { Text(text = it, fontSize = 12.sp) }
+            Text(text = productListResItem.title ?: "", fontSize = 18.sp)
+            Text(text = productListResItem.price.toString(), fontSize = 12.sp)
         }
+    }
 }

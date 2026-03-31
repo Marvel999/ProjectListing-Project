@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.app.base.UiState
 import com.example.app.data.ProductRepoInterface
-import com.example.app.entity.ProductListResItem
+import com.example.app.entity.ProductDetailsRes
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -15,21 +15,21 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class ProductListingViewmodel @Inject constructor(val productRepoInterface: ProductRepoInterface):ViewModel() {
+class ProductDetailsViewmodel @Inject constructor(val productRepoInterface: ProductRepoInterface):ViewModel() {
 
     companion object{
         const val TAG = "ProductListingViewmodel"
     }
-    private val _productList = MutableStateFlow<UiState<List<ProductListResItem>>>(UiState.Loading)
-    val productList:StateFlow<UiState<List<ProductListResItem>>> = _productList
+    private val _productDetails = MutableStateFlow<UiState<ProductDetailsRes>>(UiState.Loading)
+    val productDetails:StateFlow<UiState<ProductDetailsRes>> = _productDetails
 
-    fun fetchProductList(){
+    fun fetchProductDetails(id:Int){
         viewModelScope.launch(Dispatchers.IO) {
-             productRepoInterface.getProductList().catch { e->
-                 _productList.value=UiState.Error(e.message.toString())
+             productRepoInterface.getProductDetails(id).catch { e->
+                 _productDetails.value=UiState.Error(e.message.toString())
                  Log.e(TAG, "Error"+e.message.toString())
             }.collect {
-                 _productList.value= UiState.Success(it)
+                 _productDetails.value= UiState.Success(it)
                  Log.e(TAG, "Success"+it.toString())
 
              }
